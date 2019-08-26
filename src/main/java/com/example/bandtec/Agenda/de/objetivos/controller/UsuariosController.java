@@ -36,17 +36,15 @@ public class UsuariosController {
 	}
 	
 	@GetMapping("/usuarios/todos")
-	public ResponseEntity<List<Usuario>> obterTodos(@PathVariable("nomeDoUsuario") String nome){
-		List<Usuario> usuariosPorNome = new ArrayList<Usuario>();
-		for (Usuario u : usuarios) {
-			if(u.getNome().toLowerCase().equals(nome.toLowerCase())) {
-				usuariosPorNome.add(u);
-			}
+	public ResponseEntity<List<Usuario>> obterTodos(){
+		List<Usuario> todosUsuarios = new ArrayList<Usuario>();
+			for (Usuario u : usuarios) {
+				todosUsuarios.add(u);
 		}
-			if(usuariosPorNome.isEmpty()) {
+			if(todosUsuarios.isEmpty()) {
 				return ResponseEntity.noContent().build();
 			}
-		return ResponseEntity.ok(usuariosPorNome);
+		return ResponseEntity.ok(todosUsuarios);
 	}
 	
 	@GetMapping("/usuarios/idade/{idadePorUsuario}")
