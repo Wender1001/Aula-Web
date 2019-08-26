@@ -10,13 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> validarLogin( @RequestBody Credenciais credenciais) {
-		// TODO Auto-generated method stub
-		
+	public ResponseEntity<String> validarLogin( @RequestBody Credenciais credenciais) {		
 		if(credenciais.getSenha().equals(credenciais.getLogin())){
-					
 		return ResponseEntity.ok("sucesso");
-		
 		}
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("erro");
 	}
