@@ -6,29 +6,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Repository
-public class TodosObjetivos {
+public interface TodosObjetivos  extends JpaRepository<Objetivo, Integer> {
 
-	private final List<Objetivo> objetivos;
+	public void save(Objetivo objetivo);
 
-
-	public TodosObjetivos() {
-		this.objetivos = new ArrayList<>();
-	}
-	
-	public void salvar(Objetivo objetivo) {
-		this.objetivos.add(objetivo);
-		System.out.println("Objetivo " +objetivo+ " cadastrado com sucesso");
-	}
-
-	public List<Objetivo> ate(LocalDate data) {
-		return objetivos.stream()
-				.filter(o -> o.ate(data))
-				.collect(toList());
-	}
+	public List<Objetivo> ate(LocalDate data);
 
 }
