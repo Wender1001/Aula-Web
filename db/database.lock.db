@@ -1,0 +1,6 @@
+#FileLock
+#Mon Sep 16 20:26:17 BRT 2019
+hostName=HSL213
+id=16d3c65eaebfaaca31faa1e64313a1583108d622a69
+method=file
+server=10.3.0.56\:52299
