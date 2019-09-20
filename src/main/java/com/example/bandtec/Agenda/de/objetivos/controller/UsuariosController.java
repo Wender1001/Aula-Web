@@ -4,12 +4,12 @@ package com.example.bandtec.Agenda.de.objetivos.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.bandtec.Agenda.de.objetivos.Model.Usuario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,9 +18,8 @@ public class UsuariosController {
 	
 	private List<Usuario> usuarios;
 	
-	public UsuariosController() {
-		this.usuarios = obterTodosUsuarios();
-	}
+	public UsuariosController() { this.usuarios = obterTodosUsuarios(); }
+
 	@GetMapping("/usuarios/nome/{nomeDoUsuario}")
 	public ResponseEntity<List<Usuario>> obterPorNome(@PathVariable("nomeDoUsuario") String nome){
 		List<Usuario> usuariosPorNome = new ArrayList<Usuario>();

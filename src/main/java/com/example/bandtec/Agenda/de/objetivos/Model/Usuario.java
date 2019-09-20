@@ -1,4 +1,4 @@
-package com.example.bandtec.Agenda.de.objetivos.controller;
+package com.example.bandtec.Agenda.de.objetivos.Model;
 
 public class Usuario {
 

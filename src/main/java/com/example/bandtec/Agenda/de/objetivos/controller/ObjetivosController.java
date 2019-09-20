@@ -1,5 +1,7 @@
 package com.example.bandtec.Agenda.de.objetivos.controller;
 
+import com.example.bandtec.Agenda.de.objetivos.Model.Objetivo;
+import com.example.bandtec.Agenda.de.objetivos.Repository.TodosObjetivos;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,11 +29,11 @@ public class ObjetivosController {
 
 
 }
-    @PostMapping("/objetivos")
-    public ResponseEntity<String> salvar(@RequestBody Objetivo objetivo) {
-        todosObjetivos.save(objetivo);
-        return ResponseEntity.ok("sucesso");
-    }
+//    @PostMapping("/objetivos")
+//    public ResponseEntity<String> salvar(@RequestBody Objetivo objetivo) {
+//        todosObjetivos.save(objetivo);
+//        return ResponseEntity.ok("sucesso");
+//    }
 
 
 }
