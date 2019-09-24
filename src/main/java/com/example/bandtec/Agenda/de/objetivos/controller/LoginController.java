@@ -2,39 +2,33 @@ package com.example.bandtec.Agenda.de.objetivos.controller;
 
 import com.example.bandtec.Agenda.de.objetivos.Model.Credenciais;
 import com.example.bandtec.Agenda.de.objetivos.Repository.TodosUsuarios;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LoginController {
+public class LoginController  {
 
 	private TodosUsuarios todosUsuarios;
 
+	@Autowired
 	public LoginController(TodosUsuarios todosUsuarios){
 		this.todosUsuarios = todosUsuarios;
 	}
 
-		@GetMapping("/credenciais/login/{login}/{senha}")
-		public ResponseEntity <List<Credenciais>> obterUsuario(@PathVariable("login")String login,
-															   @PathVariable("senha") String senha){
-			List <Credenciais> usuarios =  todosUsuarios.usuarioExiste( login,senha);
-			if(usuarios.isEmpty()) {
-				return ResponseEntity.noContent().build();
-			}
-			return ResponseEntity.ok().body(usuarios);
 
-	}
-
-	@PostMapping("/credenciais")
+	@PostMapping("/login")
 	public ResponseEntity<String> salvo(@RequestBody Credenciais credenciais) {
-		todosUsuarios.save(credenciais);
+		if(todosUsuarios.usuarioExiste(credenciais)== null) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("falso");
+
+		}
 		return ResponseEntity.ok("sucesso");
+
 	}
-
-
 }
 
 

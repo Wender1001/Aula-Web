@@ -1,24 +1,12 @@
-package com.example.bandtec.Agenda.de.objetivos.Model;
+ package com.example.bandtec.Agenda.de.objetivos.Model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+ import javax.persistence.Embeddable;
 
-@Entity
-@Table (name = "usuarios")
+ @Embeddable
 public class Credenciais {
 
-	@Id
-	@GeneratedValue
-	private long id;
-
-	@JsonProperty
 	private String login;
-
-	@JsonProperty
 	private String senha;
 	
 	public Credenciais(String login, String senha) {
@@ -27,17 +15,13 @@ public class Credenciais {
 		this.senha = senha;
 	}
 
-	public Credenciais() {}
-
-
-	@Override
-	public String toString() {
-		return "Credenciais{" +
-				"login='" + login + '\'' +
-				", senha='" + senha + '\'' +
-				'}';
+	public String getSenha() {
+		return senha;
 	}
-	public boolean usuarioExiste(String login, String senha) {
-		return login.equals(login) && senha.equals(senha);
+
+	public String getLogin() {
+		return login;
 	}
+
+	public Credenciais(){}
 }
