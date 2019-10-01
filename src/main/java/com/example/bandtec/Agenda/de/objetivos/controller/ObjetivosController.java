@@ -21,20 +21,20 @@ public class ObjetivosController {
     @GetMapping("/objetivos/data/{data}")
     public ResponseEntity<List<Objetivo>> obterPorData(@PathVariable("data") String data){
 
-       List <Objetivo> objetivos =  todosObjetivos.ate(LocalDate.parse(data));
+
+List <Objetivo> objetivos =  todosObjetivos.ate(LocalDate.parse(data));
         if(objetivos.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
+        return ResponseEntity.noContent().build();
+    }
             return ResponseEntity.ok().body(objetivos);
 
 
 }
-//    @PostMapping("/objetivos")
-//    public ResponseEntity<String> salvar(@RequestBody Objetivo objetivo) {
-//        todosObjetivos.save(objetivo);
-//        return ResponseEntity.ok("sucesso");
-//    }
-
+    @PostMapping("/objetivos")
+    public ResponseEntity<String> salvar(@RequestBody Objetivo objetivo) {
+        todosObjetivos.save(objetivo);
+        return ResponseEntity.ok("sucesso");
+    }
 
 }
 

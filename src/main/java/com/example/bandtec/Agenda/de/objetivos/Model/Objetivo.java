@@ -28,7 +28,13 @@ private Credenciais credenciais;
 	@GeneratedValue
 	private long id;
 
+	@Embedded
+	@JsonProperty
 	private Prioridade prioridade;
+
+    @ManyToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
 
 	public Objetivo() {}
 	
