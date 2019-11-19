@@ -13,7 +13,7 @@ public class LivroService {
     private List<Livro> livros;
 
     public List<Livro> buscaPorTema(String tema){
-        List<Livro> resultados = new ArrayList<Livro>();
+            List<Livro> resultados = new ArrayList<Livro>();
         for(Livro livro : todosLivros()){
             if(livro.comTema(tema)){
                 resultados.add(livro);
